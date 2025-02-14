@@ -3,5 +3,16 @@ package com.app
 //TIP 코드를 <b>실행</b>하려면 <shortcut actionId="Run"/>을(를) 누르거나
 // 에디터 여백에 있는 <icon src="AllIcons.Actions.Execute"/> 아이콘을 클릭하세요.
 fun main() {
+    println("== 명언앱 ==")
+
+    while (true){
+        print("명언) ")
+
+        val input = readlnOrNull()
+
+        if(input == "종료"){
+            break
+        }
+    }
 
 }
