@@ -8,7 +8,7 @@ fun main() {
     while (true){
         print("명언) ")
 
-        val input = readlnOrNull()
+        val input = readlnOrNull()?.trim() //값이 있으면 공백제거 없으면 null
 
         if(input == "종료"){
             break
