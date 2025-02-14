@@ -5,15 +5,23 @@ package com.app
 fun main() {
     println("== 명언앱 ==")
 
-    while (true){
+    while (true) {
         print("명언) ")
 
-       // val input = readlnOrNull()?.trim() //값이 있으면 공백제거 없으면 null
-        val input = readlnOrNull()!!.trim() // !!은 null이 아님을 보장
+        // val input = readlnOrNull()?.trim() //값이 있으면 공백제거 없으면 null
+        val input = readlnOrNull()!!.trim() // !!은 null 아님을 보장
 
-        if(input == "종료"){
+        if (input == "종료")
             break
+
+        else if (input == "등록") {
+            print("명언 : ")
+            val content = readlnOrNull()!!.trim()
+            print("작가 : ")
+            val author = readlnOrNull()!!.trim()
+
+
+
         }
     }
-
 }
