@@ -49,6 +49,7 @@ class App {
                     continue
                 }
 
+                /*
                 val removed = wiserSayings.removeIf { it.id == id }
 
                 if (removed) {
@@ -56,6 +57,19 @@ class App {
                 } else {
                     println("${id}번 명언은 존재하지 않습니다.")
                 }
+
+                 */
+
+                val wiserSaying = wiserSayings.firstOrNull { it.id == id }
+
+                if (wiserSaying == null) {
+                    println("해당 id의 명언은 존재하지 않습니다.")
+                    continue
+                }
+
+                wiserSayings.remove(wiserSaying)
+
+                println("${id}번 명언이 삭제하였습니다.")
             }
         }
     }
