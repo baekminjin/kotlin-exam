@@ -17,23 +17,20 @@ class App {
 
             if (rq.action == "종료")
                 break
-
             else if (rq.action == "등록") {
                 print("명언 : ")
                 val content = readlnOrNull()!!.trim()
                 print("작가 : ")
                 val author = readlnOrNull()!!.trim()
 
-                val id  = ++lastId
+                val id = ++lastId
 
                 wiserSayings.add(WiserSaying(id, content, author))
 
                 println("${id}번 명언이 등록되었습니다.")
 
-            }
-
-            else if(rq.action == "목록"){
-                if(wiserSayings.isEmpty()){
+            } else if (rq.action == "목록") {
+                if (wiserSayings.isEmpty()) {
                     println("등록된 명언이 없습니다.")
                     continue
                 }
@@ -42,21 +39,23 @@ class App {
 
                 println("------------------")
 
-                wiserSayings.forEach{
+                wiserSayings.forEach {
                     println("${it.id} / ${it.content} / ${it.author}")
                 }
-            }
-
-            else if(rq.action == "삭제"){
+            } else if (rq.action == "삭제") {
                 val id = rq.getParamValueAsInt("id", 0)
                 if (id == 0) {
                     println("id를 정확히 입력해주세요.")
                     continue
                 }
 
-                wiserSayings.removeIf { it.id == id }
-                println("${id}번 명언을 삭제하였습니다.")
+                val removed = wiserSayings.removeIf { it.id == id }
 
+                if (removed) {
+                    println("${id}번 명언이 삭제하였습니다.")
+                } else {
+                    println("${id}번 명언은 존재하지 않습니다.")
+                }
             }
         }
     }
