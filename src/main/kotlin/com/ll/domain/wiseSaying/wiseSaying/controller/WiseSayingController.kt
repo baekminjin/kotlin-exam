@@ -1,14 +1,10 @@
 package com.ll.domain.wiseSaying.wiseSaying.controller
 
-
 import com.ll.global.bean.SingletonScope
 import com.ll.global.rq.Rq
 
-
 class WiseSayingController {
-
-    private val wiseSayingService by lazy { SingletonScope.wiseSayingService }
-
+    private val wiseSayingService = SingletonScope.wiseSayingService
 
     fun actionWrite(rq: Rq) {
         print("명언 : ")
@@ -27,11 +23,26 @@ class WiseSayingController {
             return
         }
 
+        val keywordType = rq.getParamValue("keywordType", "content")
+        val keyword = rq.getParamValue("keyword", "")
+
+        val wiseSayings = if (keyword.isNotBlank())
+            wiseSayingService.findByKeyword(keywordType, keyword)
+        else
+            wiseSayingService.findAll()
+
+        if (keyword.isNotBlank()) {
+            println("----------------------")
+            println("검색타입 : $keywordType")
+            println("검색어 : $keyword")
+            println("----------------------")
+        }
+
         println("번호 / 작가 / 명언")
 
         println("----------------------")
 
-        wiseSayingService.findAll().forEach {
+        wiseSayings.forEach {
             println("${it.id} / ${it.author} / ${it.content}")
         }
     }
@@ -50,9 +61,9 @@ class WiseSayingController {
         if (wiseSaying == null) {
             println("${id}번 명언은 존재하지 않습니다.")
             return
-        } //여기서 이미 null을 걸러내므로 아래에서는 null이 아님
+        }
 
-        wiseSayingService.delete(wiseSaying) //nullable이 아니므로 null이 아님
+        wiseSayingService.delete(wiseSaying)
 
         println("${id}번 명언을 삭제하였습니다.")
     }
@@ -83,12 +94,11 @@ class WiseSayingController {
         wiseSayingService.modify(wiseSaying, content, author)
 
         println("${id}번 명언을 수정하였습니다.")
-
-
     }
 
     fun actionBuild(rq: Rq) {
         wiseSayingService.build()
+
         println("data.json 파일의 내용이 갱신되었습니다.")
     }
 }
