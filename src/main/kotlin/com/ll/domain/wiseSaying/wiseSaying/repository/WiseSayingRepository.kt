@@ -2,38 +2,16 @@ package com.ll.domain.wiseSaying.wiseSaying.repository
 
 import com.ll.domain.wiseSaying.wiseSaying.entity.WiseSaying
 
-class WiseSayingRepository {
+interface WiseSayingRepository {
+    fun save(wiseSaying: WiseSaying): WiseSaying
 
-    private var lastId = 0
-    private val wiseSayings = mutableListOf<WiseSaying>()
+    fun isEmpty(): Boolean
 
-    fun save(wiseSaying: WiseSaying): WiseSaying {
-        if (wiseSaying.isNew()) {
-            wiseSaying.id = ++lastId
-            wiseSayings.add(wiseSaying)
-        }
+    fun findAll(): List<WiseSaying>
 
-        return wiseSaying
-    }
+    fun findById(id: Int): WiseSaying?
 
-    fun isEmpty(): Boolean {
-        return wiseSayings.isEmpty()
-    }
+    fun delete(wiseSaying: WiseSaying)
 
-    fun findAll(): List<WiseSaying> {
-        return wiseSayings
-    }
-
-    fun findById(id: Int): WiseSaying? {
-        return wiseSayings.firstOrNull { it.id == id }
-    }
-
-    fun delete(wiseSaying: WiseSaying) {
-        wiseSayings.remove(wiseSaying)
-    }
-
-    fun clear() {
-        lastId = 0
-        wiseSayings.clear()
-    }
+    fun clear()
 }
