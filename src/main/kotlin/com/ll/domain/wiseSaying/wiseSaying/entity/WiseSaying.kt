@@ -1,8 +1,8 @@
 package com.ll.domain.wiseSaying.wiseSaying.entity
 
-data class WiseSaying (
+data class WiseSaying ( // data class: 데이터를 담는 클래스
     var content: String,
-    var author: String,
+    var author: String
 ) {
     var id: Int = 0
 
@@ -11,7 +11,7 @@ data class WiseSaying (
         this.author = author
     }
 
-    fun isNew(): Boolean {
+    fun isNew(): Boolean { // 새로운 데이터인지 확인
         return id == 0
     }
 }
