@@ -14,4 +14,15 @@ data class WiseSaying ( // data class: 데이터를 담는 클래스
     fun isNew(): Boolean { // 새로운 데이터인지 확인
         return id == 0
     }
+
+    val json: String
+        get() {
+            return """
+                {
+                    "id": $id,
+                    "content": "$content",
+                    "author": "$author"
+                }
+            """.trimIndent()
+        }
 }
