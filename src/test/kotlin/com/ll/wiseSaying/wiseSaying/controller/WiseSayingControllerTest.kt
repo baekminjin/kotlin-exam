@@ -1,4 +1,4 @@
-package com.ll.wiseSaying.wiseSaying.controller
+package com.ll.domain.wiseSaying.wiseSaying.controller
 
 import com.ll.TestRunner
 import com.ll.global.bean.SingletonScope
