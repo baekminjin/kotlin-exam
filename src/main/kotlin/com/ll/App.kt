@@ -2,6 +2,8 @@ package com.ll
 
 import com.ll.domain.system.system.controller.SystemController
 import com.ll.domain.wiseSaying.wiseSaying.controller.WiseSayingController
+import com.ll.global.rq.Rq
+
 
 class App {
     fun run() {
