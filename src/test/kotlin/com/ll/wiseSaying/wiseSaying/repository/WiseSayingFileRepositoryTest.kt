@@ -45,4 +45,6 @@ class WiseSayingFileRepositoryTest {
         val foundWiseSaying = wiseSayingRepository.findById(wiseSaying.id)
         assertThat(foundWiseSaying).isEqualTo(wiseSaying)
     }
+
+
 }
